@@ -13,6 +13,8 @@ setuptools.setup(
     entry_points={
         'console_scripts': [
             # TODO: need to implement this functionality [6]
+            'leet-test-task-encode=convertor.__main__:encode',
+            'leet-test-task-decode=convertor.__main__:decode',
         ]
     },
 )

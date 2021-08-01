@@ -4,10 +4,9 @@ from convertor.abstract_base_convertor import AbstractFileConvertor
 import glob
 
 
-class Decoder(AbstractFileConvertor):
+class Encoder(AbstractFileConvertor):
     @staticmethod
     def _file_to_dict(filename) -> dict[str, str]:
-        # TODO: need to implement this functionality [1]
         dict_letters = {}
         with open(filename) as file:
             for line in file:
@@ -16,8 +15,12 @@ class Decoder(AbstractFileConvertor):
         return dict_letters
 
     def convert_text(self, input_text: str) -> str:
-        for original, replace in self._latter_mapper.items():
-            input_text = input_text.replace(original, replace, -1)
+        sorted_keys_len_values = sorted(
+            self._latter_mapper,
+            key=lambda k: len(self._latter_mapper[k]),
+            reverse=True)
+        for key in sorted_keys_len_values:
+            input_text = input_text.replace(self._latter_mapper[key], key, -1)
         return input_text
 
     def _create_map(self, file: str, **kwargs) -> dict[str, str]:

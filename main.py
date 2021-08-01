@@ -3,7 +3,7 @@ import os
 from pathlib import Path
 
 import convertor
-from convertor.decode_convertor import Decoder
+from convertor.abstract_base_convertor import AbstractFileConvertor
 from convertor.encode_convertor import Encoder
 from convertor.trash_generator import Trasher
 
@@ -19,7 +19,7 @@ def assert_source_files():
 
 
 def decode_source():
-    decoder = Decoder(KEY_FILE)
+    decoder = AbstractFileConvertor(KEY_FILE)
     return decoder.convert_files(input_dir=SOURCE_DIR,
                                  input_mask='source*',
                                  output_dir=DECODED_DIR,

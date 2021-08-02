@@ -34,9 +34,7 @@ class AbstractFileConvertor(ABC):
         :param input_text: the text to convert
         :return: converted text
         """
-        for original, replace in self._latter_mapper.items():
-            input_text = input_text.replace(original, replace, -1)
-        return input_text
+        raise NotImplementedError
 
     @staticmethod
     def output_name_generator(input_file_name: str, input_prefix: str,

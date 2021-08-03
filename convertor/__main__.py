@@ -9,7 +9,7 @@ KEY_FILE = 'key'
 
 
 def prepare_text_source(text: str):
-    return re.sub(re.escape(string.punctuation), '', text.lower())
+    return re.sub(string.punctuation, '', text.lower())
 
 
 def parse_args():
